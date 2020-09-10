@@ -557,7 +557,7 @@ int main(void)
                 }
                 free(all_data);
             }
-            if (plik != NULL)
+            if (plik != NULL&& plik->size>0)
             {
                 struct dFile * tempFile = plik;
                 uint16_t tempAddress = tempFile->first_cluster_address_low;
@@ -653,7 +653,7 @@ int main(void)
                 }
                 free(all_data);
             }
-            if (plik != NULL)
+            if (plik != NULL && plik->size>0)
             {
                 struct dFile * tempFile = plik;
                 uint16_t tempAddress = tempFile->first_cluster_address_low;
@@ -685,7 +685,7 @@ int main(void)
                 }
                 else
                 {
-                    fwrite(all_data, plik->size, 1, nPlik);
+                    fprintf(nPlik,"%s", all_data);
                     fclose(nPlik);
                     free(all_data);
                 }
@@ -814,7 +814,7 @@ int main(void)
                         for (unsigned int g = 0; g < strlen(polecenia[2]); g++) polecenia[2][g] = toupper(polecenia[2][g]);
                         if (!strcmp(token, polecenia[2]))
                         {
-                            plik = (dir_chain + j);
+                            plik2 = (dir_chain + j);
                             break;                
                         }                     
                     }
